@@ -5,6 +5,10 @@ import sim.engine.Steppable;
 
 public class Hospital implements Steppable {
 
+	//TODO inherits hospital capcity from environment ~ 
+	//TODO implement hospital state for an agent ~ in this class or the agent class?
+	//TODO implement agent coloring (4 states)
+	
 	public Hospital() {
 		// TODO Auto-generated constructor stub
 	}

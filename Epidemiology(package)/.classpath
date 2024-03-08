@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/MASON"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/MASONplus9"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MASON"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MASONplus9"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
