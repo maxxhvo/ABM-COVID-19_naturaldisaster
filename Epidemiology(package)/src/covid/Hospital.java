@@ -2,21 +2,62 @@ package covid;
 
 import sim.engine.SimState;
 import sim.engine.Steppable;
+import sim.util.Bag;
+import java.util.Random;
 
 public class Hospital implements Steppable {
+	
+	Bag hospitalizedAgents;
+	int capacity;
 
-	//TODO inherits hospital capcity from environment ~ 
-	//TODO implement hospital state for an agent ~ in this class or the agent class?
 	//TODO implement agent coloring (4 states)
 	
-	public Hospital() {
-		// TODO Auto-generated constructor stub
+	public Hospital(int hospitalCapacity) {
+		this.capacity = hospitalCapacity;
+	}
+	
+	public void removeRecovered(Environment state) {
+		for (int i = 0; i < hospitalizedAgents.numObjs; i++) {
+			Agent a = (Agent) hospitalizedAgents.objs[i];
+			if ((a.getStatus() == Agent.AgentStatus.RECOVERED) &&
+					(a.isInHospital == false)) {
+				hospitalizedAgents.remove(i);
+			}
+		}
+	}
+	
+	public void randomSelection(Environment state) {
+		// if hospital is full don't choose any agents
+		if (hospitalizedAgents.numObjs >= capacity) return;
+		
+		int slotsOpen = capacity - hospitalizedAgents.numObjs;
+		Bag pulled = null;
+		Random random = new Random();
+		Bag allAgents = state.allAgents;
+		
+		// randomly generate id's and add corresponding agents
+		for (int i = 0; i < slotsOpen; i++) {
+			// i.e. choose 0 to 249
+			int index = random.nextInt(state.getN() - 1);
+			Agent a = (Agent) allAgents.objs[index];
+			pulled.add(a);
+		}
+		
+		// loop through the pulled bag and ONLY add the infected agents
+		for (int j = 0; j < pulled.numObjs; j++) {
+			Agent a = (Agent) pulled.objs[j];
+			if (a.getStatus() == Agent.AgentStatus.INFECTED) {
+				// add to the hospitalized bag
+				hospitalizedAgents.add(a);
+			}
+		}
 	}
 
 	@Override
 	public void step(SimState state) {
-		// TODO Auto-generated method stub
-		
+		Environment eState = (Environment) state;
+		removeRecovered(eState);
+		randomSelection(eState);
 	}
 }
 

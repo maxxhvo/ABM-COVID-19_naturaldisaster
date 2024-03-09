@@ -1,7 +1,10 @@
 package covid;
 
 import java.util.ArrayList;
+
+import sim.util.Bag;
 import sim.util.Int2D; //2D space
+import spaces.Spaces;
 import sweep.SimStateSweep;
 
 public class Environment extends SimStateSweep{
@@ -13,12 +16,13 @@ public class Environment extends SimStateSweep{
 	int n_infected = 1; //initial infected
 	boolean oneAgentPerCell = false;
 	double p_spread = 0.7; //baseline spread
-	boolean natural_disaster = false; //switch btw. conditions (changes hospital capacity)
-	int hospital_capacity = 50; //we can implement it separately (one int amount for natural disaster and non-natural disaster conditions
+	boolean natural_disaster = false; //switch btw conditions (changes hospital capacity)
+	int hospital_capacity = 50; 
 	double burnin = 0.2; //proportion to implement
 	int recovery_h = 2;
 	int recovery_natural = 11;
 	//TODO add logical parameters/variables
+	Bag allAgents;
 	
 	public Environment(long seed) {
 		super(seed);
@@ -34,19 +38,19 @@ public class Environment extends SimStateSweep{
 		super(seed, observer, runTimeFileName);
 		// TODO Auto-generated constructor stub
 	}
-	
-	/*
+
 	 public void start() {
 	       super.start();
 	       spaces = Spaces.SPARSE;
 	       make2DSpace(spaces, gridWidth, gridHeight);
+	       Hospital hospital = new Hospital(hospital_capacity);
 	       makeAgents();
+	       assignStatus();
 	       if(observer != null) {
 	           observer.initialize(sparseSpace, spaces);//initialize the experimenter by calling initialize in the parent class
 	       }
 	 }
-	 */
-	
+
 	public void makeAgents() {
 		if (this.oneAgentPerCell) {
 			int size = gridWidth * gridHeight;
@@ -55,9 +59,57 @@ public class Environment extends SimStateSweep{
 				System.out.println("change the number of agents to " + n);
 			}
 		}
-		//TODO consider frozen
+		
+		for (int i = 0; i < n; i++) {
+			int x = random.nextInt(gridWidth);
+			int y = random.nextInt(gridHeight);
+			
+			if (this.oneAgentPerCell) {
+				Bag b = sparseSpace.getObjectsAtLocation(x,y);
+				while (b != null) {
+					x = random.nextInt(gridWidth);
+					y = random.nextInt(gridHeight);
+					b = sparseSpace.getObjectsAtLocation(x,y);
+				}
+			}
+			// not sure with directions (to be fixed)
+			int xdir = random.nextInt(3) - 1;
+			int ydir = random.nextInt(3) - 1;
+			
+			// Assign agent its own id, x, y location and their direction
+			Agent a = new Agent(i, x, y, xdir, ydir);
+			
+			// Now, add all the agents into our "bag"
+			allAgents.add(a);
+			
+			sparseSpace.setObjectLocation(a, x, y);
+			schedule.scheduleRepeating(a);
+		}
+		//TODO consider frozen -> ??
+	}
+	
+	public void assignStatus() {
+		// Agent's id starts from 0 to n - 1 (249 for example)
+		// loop since there is a possibility that we want more than 1 infected agent
+		for (int n = 0; n < n_infected; n++) {
+			int randomID = random.nextInt(n - 1);
+			// This might be incorrect if bag's index does not start from 0
+			Agent a = (Agent) allAgents.objs[randomID];
+			a.setStatus(Agent.AgentStatus.INFECTED);
+		}
+		
+		// loop through all agents in the bag and assign the status susceptible
+		for (int i = 0; i < allAgents.numObjs; i++) {
+			Agent a = (Agent) allAgents.objs[i];
+			if (a.getStatus() != Agent.AgentStatus.INFECTED) {
+				a.setStatus(Agent.AgentStatus.SUSCEPTIBLE);
+			}
+		}
 	}
 	
 	//TODO create getters and setters when variables are finalized
+	public int getN() {
+		return n;
+	}
 
 }
