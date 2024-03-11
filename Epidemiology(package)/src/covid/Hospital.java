@@ -38,8 +38,14 @@ public class Hospital implements Steppable {
 		// randomly generate id's and add corresponding agents
 		for (int i = 0; i < slotsOpen; i++) {
 			// i.e. choose 0 to 249
-			int index = random.nextInt(state.getN() - 1);
+			int index = random.nextInt(state.getN() -1);
 			Agent a = (Agent) allAgents.objs[index];
+			// If the agent is already in the hospital, choose different agent
+			while (a.isInHospital == true) {
+				index = random.nextInt(state.getN() - 1);
+			}
+			a = (Agent)allAgents.objs[index];
+
 			pulled.add(a);
 		}
 		
