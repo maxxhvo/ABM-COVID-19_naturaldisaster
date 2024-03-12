@@ -9,6 +9,7 @@ import sim.util.Int2D;
 public class Agent implements Steppable {
 	public enum AgentStatus {
 		SUSCEPTIBLE,
+		EXPOSED,
 		INFECTED,
 		RECOVERED
 	}
@@ -29,8 +30,6 @@ public class Agent implements Steppable {
 
 	private AgentStatus status;
 	
-	// What is this variable for??
-	boolean frozen = false;
 	//constructor method
 	
 	public Agent(int id, int x, int y, int xdir, int ydir) {
@@ -44,104 +43,73 @@ public class Agent implements Steppable {
 
 	
 	public void placeAgent(Environment state) {
-        if (frozen) {
-            state.sparseSpace.setObjectLocation(this, x, y);
-            frozen = true;
+        if (isInHospital) {
             return;
         }
-        x = state.sparseSpace.stx(x + xdir);
-        y = state.sparseSpace.sty(y + ydir);
+        int tempx = state.sparseSpace.stx(x + xdir);
+        int tempy = state.sparseSpace.sty(y + ydir);
 	
         if (state.oneAgentPerCell) {
-            int tempx = x + xdir;
-            int tempy = y + ydir;
             Bag b = state.sparseSpace.getObjectsAtLocation(tempx, tempy);
             	if (b != null) { //bag is not empty ~
-                return; } //pass conditions successfully
-            x = tempx;
-            y = tempy;
+            		return; 
+                } //pass conditions successfully
         }
+        x = tempx;
+        y = tempy;
         state.sparseSpace.setObjectLocation(this, x, y);
     }
 	
-	
-	public int decideX(Environment state, Bag neighbors) {
-		int posx = 0;
-        int negx = 0;
-      if(state.oneAgentPerCell) {
-    	  	for(int i = 0; i < neighbors.numObjs; i++) {
-    	  		Agent aRandom = (Agent) neighbors.objs[i];
-
-    	  		if (aRandom.x > this.x) {
-                // right side
-                posx++;
-    	  		} else if (aRandom.x < this.x) {
-                negx++;
-    	  		}
-    	  	}
-    	  	if (posx > negx) {
-    	  		return 1;
-    	  	} else if (negx > posx) {
-    	  		return -1;
-    	  	} else {
-    	  		return state.random.nextInt(3) - 1;
-    	  	}
-      	}
-       else {
-        return state.random.nextInt(3) - 1;
-        }
-    }
-	
-	public int decideY(Environment state, Bag neighbors) {
-		int posy = 0;
-        int negy = 0;
-      if(state.oneAgentPerCell) {
-    	  	for (int i = 0; i < neighbors.numObjs; i++) {
-    	  		Agent aRandom = (Agent) neighbors.objs[i];
-    	  		if (aRandom.y > this.y) {
-                posy++;
-    	  		} else if (aRandom.y < this.y) {
-                negy++;
-    	  		}
-    	  	}
-    	  	if (posy > negy) {
-    	  		return 1;
-    	  	} else if (negy > posy) {
-    	  		return -1;
-    	  	} else {
-    	  		return state.random.nextInt(3) - 1;
-    	  	}
-      	}
-      else {
-          return state.random.nextInt(3) - 1;
-      	  }
-	}
-	
-	
-	
 	public void move(Environment state) {
-		if(!frozen) {
-        xdir = state.sparseSpace.stx(x + xdir);
-        ydir = state.sparseSpace.sty(y + ydir);
-    }
-        placeAgent(state); //implement ~ frozen in placeAgent
-    }
-	
-	
-	public void infect(int ID,String status/*,location,*/Bag neighbors) { //need to define location
-		//TODO
+		if (isInHospital) return;
+		
+		// 0.5 could be further changed -> probability of changing direction
+		if (state.random.nextBoolean(0.5)) {
+			xdir = state.random.nextInt(3) - 1;
+			ydir = state.random.nextInt(3) - 1;
+		}
+        
+		placeAgent(state); //implement ~ frozen in placeAgent
 	}
 	
-	public void changeStatus(boolean updateStatus) {
+	
+	public boolean infect(Environment state, Bag neighbors) { //need to define location
+		// PseudoCode
+		/*
+		 * loop through the neighbor bag
+		 * 	check infected -> if infected, then add infected++
+		 * 
+		 * p_catchCOVID - infected * p_spread (0.7)
+		 */
+		int numInfectedInBag = 0;
+		
+		for (int i = 0; i < neighbors.numObjs; i++) {
+			Agent a = (Agent)neighbors.objs[i];
+			if (a.status == AgentStatus.INFECTED) {
+				numInfectedInBag++;
+			}
+		}
+		
+		double p_catch = numInfectedInBag * state.p_spread;
+		
+		if(state.random.nextBoolean(p_catch)) return true;
+		else return false;
+	}
+	
+	public void changeStatus(Environment state, boolean updateStatus) {
 		// if the agent's status is not yet to be changed, then return/exit this function
 		if (!updateStatus) return;
 		
-		switch(status) {
-		case SUSCEPTIBLE:
+		switch(this.status) {
+		case AgentStatus.SUSCEPTIBLE:
+			this.status = AgentStatus.EXPOSED;
+		case AgentStatus.EXPOSED:
 			this.status = AgentStatus.INFECTED;
-		case INFECTED:
+		case AgentStatus.INFECTED:
 			this.status = AgentStatus.RECOVERED;
 		}
+		
+		colorByStatus(state);
 	}
 	
 	public boolean updateInfectionTime(Environment state) {
@@ -150,6 +118,7 @@ public class Agent implements Steppable {
 			if (this.infectedTimeHos >= state.recovery_h) {
 				// now fully recovered, change its isInHospital and status
 				this.isInHospital = false;
+				state.hospitalizedAgents.remove(this);
 				return true;
 			} else {
 				// agent is not yet fully recovered, increment its time
@@ -163,6 +132,26 @@ public class Agent implements Steppable {
 				this.infectedTimeNorm++;
 			}
 		}
+		return false;
+	}
+	
+	public void colorByStatus(Environment state) {
+		switch(status) {
+		case SUSCEPTIBLE:
+			if (isInHospital) state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)0, (float)0.5);
+			// color for blue should be dimmer (agent, r, g, b, opacity)
+			else state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)0, (float)1);
+			// color for blue
+		case INFECTED:
+			// color for red
+		case RECOVERED:
+			// color for green
+		}
+	}
+	
+	public Bag findNeighbors(Environment state) {
+		Bag agents = state.sparseSpace.getMooreNeighbors(x, y, state.searchRadius, state.sparseSpace.TOROIDAL,false);
+		return agents;
 	}
 	
 	// TODO implement freezing aggregation
@@ -184,33 +173,32 @@ public class Agent implements Steppable {
 		return status;
 	}
 	
-	
-	/* bounded concepts
-	 public int bx(int x, Environment state) {
-	        // Adjust x to stay within bounds for a bounded space
-	        return Math.max(0, Math.min(x, state.getGridWidth() - 1));
-	    }
-
-	 public int by(int y, Environment state) {
-	        // Adjust y to stay within bounds for a bounded space
-	        return Math.max(0, Math.min(y, state.getGridHeight() - 1));
-	} */
-	
 	@Override
 	public void step(SimState state) {
 		Environment eState = (Environment) state;
-		move();
+		move(eState);
 		
 		// variable to check if we need to update current agent's status
 		boolean updateStatus;
 		switch(status) {
+		case EXPOSED:
+			changeStatus(eState, true);
+			// if break here, then we are adding recoveryTime++ in the second round
+			// no break if we want to immediately add the recoveryTime++
+			break;
 		case SUSCEPTIBLE:
-			updateStatus = infect();
-			changeStatus(updateStatus);  // so like maybe we could have a bool variable to check if the infect returned true or false then change susceptible's state
+			Bag neighbors = findNeighbors(eState);
+			if (neighbors.isEmpty()) {
+				return;
+			}
+			updateStatus = infect(eState, neighbors);
+			changeStatus(eState, updateStatus);
+			break;// so like maybe we could have a bool variable to check if the infect returned true or false then change susceptible's state
 		case INFECTED:
 			// just check if their infection time has passed and update
 			updateStatus = updateInfectionTime(eState);
-			changeStatus(updateStatus);  // change status accordingly
+			changeStatus(eState, updateStatus);  // change status accordingly
+			break;
 		case RECOVERED:;
 		}
 		/*

@@ -23,6 +23,8 @@ public class Environment extends SimStateSweep{
 	int recovery_natural = 11;
 	//TODO add logical parameters/variables
 	Bag allAgents;
+	Bag hospitalizedAgents;
+	int searchRadius = 1;
 	
 	public Environment(long seed) {
 		super(seed);
@@ -83,9 +85,9 @@ public class Environment extends SimStateSweep{
 			allAgents.add(a);
 			
 			sparseSpace.setObjectLocation(a, x, y);
+			a.colorByStatus(this);
 			schedule.scheduleRepeating(a);
 		}
-		//TODO consider frozen -> ??
 	}
 	
 	public void assignStatus() {

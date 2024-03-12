@@ -12,8 +12,6 @@ public class GUI extends GUIStateSweep {
 	}
 	
 	public static void main(String[] args) {
-		//TODO GUI.initialize(Environment.class,Experimenter.class, AgentsGUI.class, )
-		// To be fixed accordingly
 		GUI.initialize(Environment.class,  Experimenter.class,  GUI.class,  400,  400,  Color.WHITE, Color.RED, false, spaces.SPARSE);
 	}
 }
