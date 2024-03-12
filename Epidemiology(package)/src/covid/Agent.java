@@ -131,7 +131,39 @@ public class Agent implements Steppable {
 	public void infect(int ID,String status/*,location,*/Bag neighbors) { //need to define location
 		//TODO
 	}
-
+	
+	public void changeStatus(boolean updateStatus) {
+		// if the agent's status is not yet to be changed, then return/exit this function
+		if (!updateStatus) return;
+		
+		switch(status) {
+		case SUSCEPTIBLE:
+			this.status = AgentStatus.INFECTED;
+		case INFECTED:
+			this.status = AgentStatus.RECOVERED;
+		}
+	}
+	
+	public boolean updateInfectionTime(Environment state) {
+		if (isInHospital) {
+			// agent in the hospital
+			if (this.infectedTimeHos >= state.recovery_h) {
+				// now fully recovered, change its isInHospital and status
+				this.isInHospital = false;
+				return true;
+			} else {
+				// agent is not yet fully recovered, increment its time
+				this.infectedTimeHos++;
+			}
+		} else {
+			// agent in Space
+			if (this.infectedTimeNorm >= state.recovery_natural) {
+				return true;
+			} else {
+				this.infectedTimeNorm++;
+			}
+		}
+	}
 	
 	// TODO implement freezing aggregation
 	// Commented just because I want to talk what this function is for
@@ -166,7 +198,21 @@ public class Agent implements Steppable {
 	
 	@Override
 	public void step(SimState state) {
-		// TODO implement what occurs during each time step
+		Environment eState = (Environment) state;
+		move();
+		
+		// variable to check if we need to update current agent's status
+		boolean updateStatus;
+		switch(status) {
+		case SUSCEPTIBLE:
+			updateStatus = infect();
+			changeStatus(updateStatus);  // so like maybe we could have a bool variable to check if the infect returned true or false then change susceptible's state
+		case INFECTED:
+			// just check if their infection time has passed and update
+			updateStatus = updateInfectionTime(eState);
+			changeStatus(updateStatus);  // change status accordingly
+		case RECOVERED:;
+		}
 		/*
 		if(frozen) return;
 			move((Environment)state);
