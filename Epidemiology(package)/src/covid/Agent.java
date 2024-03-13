@@ -39,6 +39,7 @@ public class Agent implements Steppable {
 		this.y = y;
 		this.xdir = xdir;
 		this.ydir = ydir;
+		this.status = AgentStatus.SUSCEPTIBLE;
 	}
 
 	
@@ -131,6 +132,7 @@ public class Agent implements Steppable {
 	public void colorByStatus(Environment state) {
 		switch(status) {
 		case SUSCEPTIBLE:
+			// blue
 			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)255, (float)1);
 		case INFECTED:
 			// color for red
@@ -138,6 +140,7 @@ public class Agent implements Steppable {
 			// color for red should be dimmer (agent, r, g, b, opacity)
 			else state.gui.setOvalPortrayal2DColor(this, (float)255, (float)0, (float)0, (float)1);
 		case RECOVERED:
+			// green
 			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)255, (float)0, (float)1);
 		}
 	}

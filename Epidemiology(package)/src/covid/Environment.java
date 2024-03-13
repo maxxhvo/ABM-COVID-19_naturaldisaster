@@ -2,6 +2,7 @@ package covid;
 
 import java.util.ArrayList;
 
+import covid.Agent.AgentStatus;
 import sim.util.Bag;
 import sim.util.Int2D; //2D space
 import spaces.Spaces;
@@ -27,7 +28,6 @@ public class Environment extends SimStateSweep{
 	
 	public Environment(long seed) {
 		super(seed);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Environment(long seed, Class observer) {
@@ -48,7 +48,7 @@ public class Environment extends SimStateSweep{
 	       makeAgents();
 	       assignStatus();
 	       if(observer != null) {
-	           observer.initialize(sparseSpace, spaces);//initialize the experimenter by calling initialize in the parent class
+	           observer.initialize(sparseSpace, spaces);  //initialize the experimenter by calling initialize in the parent class
 	       }
 	 }
 
@@ -94,17 +94,8 @@ public class Environment extends SimStateSweep{
 		// loop since there is a possibility that we want more than 1 infected agent
 		for (int n = 0; n < n_infected; n++) {
 			int randomID = random.nextInt(n - 1);
-			// This might be incorrect if bag's index does not start from 0
 			Agent a = (Agent) allAgents.objs[randomID];
-			a.setStatus(Agent.AgentStatus.INFECTED);
-		}
-		
-		// loop through all agents in the bag and assign the status susceptible
-		for (int i = 0; i < allAgents.numObjs; i++) {
-			Agent a = (Agent) allAgents.objs[i];
-			if (a.getStatus() != Agent.AgentStatus.INFECTED) {
-				a.setStatus(Agent.AgentStatus.SUSCEPTIBLE);
-			}
+			a.setStatus(AgentStatus.INFECTED);
 		}
 	}
 	
