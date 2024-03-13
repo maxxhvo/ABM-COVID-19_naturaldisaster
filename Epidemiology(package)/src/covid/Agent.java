@@ -133,15 +133,15 @@ public class Agent implements Steppable {
 		switch(status) {
 		case SUSCEPTIBLE:
 			// blue
-			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)255, (float)1);
+			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)1, (float)1);
 		case INFECTED:
 			// color for red
-			if (isInHospital) state.gui.setOvalPortrayal2DColor(this, (float)255, (float)0, (float)0, (float)0.5);
+			if (isInHospital) state.gui.setOvalPortrayal2DColor(this, (float)1, (float)0, (float)0, (float)0.5);
 			// color for red should be dimmer (agent, r, g, b, opacity)
-			else state.gui.setOvalPortrayal2DColor(this, (float)255, (float)0, (float)0, (float)1);
+			else state.gui.setOvalPortrayal2DColor(this, (float)1, (float)0, (float)0, (float)1);
 		case RECOVERED:
 			// green
-			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)255, (float)0, (float)1);
+			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)1, (float)0, (float)1);
 		}
 	}
 	

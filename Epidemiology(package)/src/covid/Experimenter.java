@@ -28,6 +28,7 @@ public class Experimenter extends Observer {
 		return true;
 	}
 	
+	// change Environment state to SimState statem -> not sure?
 	public void countStrategies(Environment state) {
 		Bag agents = state.sparseSpace.getAllObjects();
 		for(int i=0;i<agents.numObjs;i++) {

@@ -92,7 +92,7 @@ public class Environment extends SimStateSweep{
 	public void assignStatus() {
 		// Agent's id starts from 0 to n - 1 (249 for example)
 		// loop since there is a possibility that we want more than 1 infected agent
-		for (int n = 0; n < n_infected; n++) {
+		for (int i = 0; i < n_infected; i++) {
 			int randomID = random.nextInt(n - 1);
 			Agent a = (Agent) allAgents.objs[randomID];
 			a.setStatus(AgentStatus.INFECTED);
