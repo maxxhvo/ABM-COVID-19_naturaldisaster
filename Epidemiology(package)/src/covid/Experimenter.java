@@ -19,18 +19,11 @@ public class Experimenter extends Observer {
 		super(fileName, folderName, state, sweeper, precision, headers);
 		// TODO Auto-generated constructor stub
 	}
-
-	public boolean reset(Environment state) {
-		super.reset();
-		susceptible =0;
-		infected = 0;
-		recovered = 0;
-		return true;
-	}
 	
-	// change Environment state to SimState statem -> not sure?
+	
+	// change Environment state to SimState state -> not sure?
 	public void countStrategies(Environment state) {
-		Bag agents = state.sparseSpace.getAllObjects();
+		Bag agents = state.sparseSpace.getAllObjects();  //# of all agents
 		for(int i=0;i<agents.numObjs;i++) {
 			Agent a =(Agent)state.allAgents.objs[i];
 			switch(a.getStatus()) {
@@ -45,6 +38,15 @@ public class Experimenter extends Observer {
 				break;
 			}
 		}
+	}
+	
+	//override methods in parent observer class
+	public boolean reset(Environment state) {
+		super.reset();
+		susceptible =0;
+		infected = 0;
+		recovered = 0;
+		return true;
 	}
 	
 	public boolean nextInterval() {
