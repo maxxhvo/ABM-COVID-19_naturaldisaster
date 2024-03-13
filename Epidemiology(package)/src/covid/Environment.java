@@ -22,9 +22,10 @@ public class Environment extends SimStateSweep{
 	double burnin = 0.2; //proportion to implement
 	int recovery_h = 2;
 	int recovery_natural = 11;
-	Bag allAgents = new Bag();
+	Bag allAgents = new Bag(); //bag of all agents
 	Bag hospitalizedAgents = new Bag();
 	int searchRadius = 1;
+	boolean charts = true;
 	
 	public Environment(long seed) {
 		super(seed);
@@ -43,7 +44,7 @@ public class Environment extends SimStateSweep{
 	 public void start() {
 	       super.start();
 	       spaces = Spaces.SPARSE;
-	       make2DSpace(spaces, gridWidth, gridHeight);
+	       makeSpace(gridWidth, gridHeight);
 	       Hospital hospital = new Hospital(hospital_capacity);
 	       makeAgents();
 	       assignStatus();
