@@ -65,8 +65,5 @@ public class Experimenter extends Observer {
 	    	   numHospitalized = eState.hospitalizedAgents.numObjs;
 	    	   nextInterval();
 	       }
-	       
-	       /*if(step %this.state.dataSamplingInterval == 0) { // remember "%" is the remainder operator, so this logical statement translates as "is this step a multiple of the interval we set?"            numberOfFrozenAgents((Environment) state);
-	       }*/
 	}
 }

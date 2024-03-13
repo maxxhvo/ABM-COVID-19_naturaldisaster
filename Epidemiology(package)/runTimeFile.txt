@@ -1,0 +1,13 @@
+/* This runtime file allows the user to specify a simulation script file for simulation.
+It also allows the user to specify the data output folder and file name. The column headers
+for the data can also be specified. The form of the script is specified below:*/
+
+
+
+Scriptname: script.txt // The name of the file for parameter sweeps
+DataFolder: data //Folder holding simulation results
+DataFile: results.txt //Name of results file.
+CheckSweepOptions: false //Determines whether parameter sweeps is automatically checked.
+ColumnHeaders: N, item1, item2 //The column headers for the data file, 'steps' and 'rep' are prepended to this list
+Precision: 3  //Numerical precision for data, must be an integer.
+stopWhenNoAgents: true  //The simulation will stop when there are no agents left, else it will run to the stopping time even if there are not agents.

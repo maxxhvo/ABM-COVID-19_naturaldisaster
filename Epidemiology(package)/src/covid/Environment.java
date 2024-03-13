@@ -21,9 +21,8 @@ public class Environment extends SimStateSweep{
 	double burnin = 0.2; //proportion to implement
 	int recovery_h = 2;
 	int recovery_natural = 11;
-	//TODO add logical parameters/variables
-	Bag allAgents;
-	Bag hospitalizedAgents;
+	Bag allAgents = new Bag();
+	Bag hospitalizedAgents = new Bag();
 	int searchRadius = 1;
 	
 	public Environment(long seed) {
@@ -109,7 +108,22 @@ public class Environment extends SimStateSweep{
 		}
 	}
 	
-	//TODO create getters and setters when variables are finalized
+	public Bag getAllAgents() {
+		return allAgents;
+	}
+
+	public void setAllAgents(Bag allAgents) {
+		this.allAgents = allAgents;
+	}
+
+	public Bag getHospitalizedAgents() {
+		return hospitalizedAgents;
+	}
+
+	public void setHospitalizedAgents(Bag hospitalizedAgents) {
+		this.hospitalizedAgents = hospitalizedAgents;
+	}
+
 	public int getN() {
 		return n;
 	}

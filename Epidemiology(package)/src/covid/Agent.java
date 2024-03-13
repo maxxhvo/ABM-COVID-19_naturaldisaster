@@ -74,13 +74,6 @@ public class Agent implements Steppable {
 	
 	
 	public boolean infect(Environment state, Bag neighbors) { //need to define location
-		// PseudoCode
-		/*
-		 * loop through the neighbor bag
-		 * 	check infected -> if infected, then add infected++
-		 * 
-		 * p_catchCOVID - infected * p_spread (0.7)
-		 */
 		int numInfectedInBag = 0;
 		
 		for (int i = 0; i < neighbors.numObjs; i++) {
@@ -138,19 +131,14 @@ public class Agent implements Steppable {
 	public void colorByStatus(Environment state) {
 		switch(status) {
 		case SUSCEPTIBLE:
-			if (isInHospital) state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)255, (float)0.5);
-			// color for blue should be dimmer (agent, r, g, b, opacity)
-			else state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)255, (float)1);
+			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)255, (float)1);
 		case INFECTED:
 			// color for red
 			if (isInHospital) state.gui.setOvalPortrayal2DColor(this, (float)255, (float)0, (float)0, (float)0.5);
-			// color for blue should be dimmer (agent, r, g, b, opacity)
+			// color for red should be dimmer (agent, r, g, b, opacity)
 			else state.gui.setOvalPortrayal2DColor(this, (float)255, (float)0, (float)0, (float)1);
 		case RECOVERED:
-			// color for green
-			if (isInHospital) state.gui.setOvalPortrayal2DColor(this, (float)0, (float)255, (float)0, (float)0.5);
-			// color for green should be dimmer (agent, r, g, b, opacity)
-			else state.gui.setOvalPortrayal2DColor(this, (float)0, (float)255, (float)0, (float)1);
+			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)255, (float)0, (float)1);
 		}
 	}
 	
@@ -206,10 +194,6 @@ public class Agent implements Steppable {
 			break;
 		case RECOVERED:;
 		}
-		/*
-		if(frozen) return;
-			move((Environment)state);
-		*/
 	}
 
 }

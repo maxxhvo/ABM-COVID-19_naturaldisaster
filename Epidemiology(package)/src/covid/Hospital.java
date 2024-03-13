@@ -8,8 +8,6 @@ import java.util.Random;
 public class Hospital implements Steppable {
 	int capacity;
 
-	//TODO implement agent coloring (4 states)
-	
 	public Hospital(int hospitalCapacity) {
 		this.capacity = hospitalCapacity;
 	}
