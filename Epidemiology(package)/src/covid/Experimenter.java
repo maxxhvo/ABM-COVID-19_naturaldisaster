@@ -10,9 +10,8 @@ public class Experimenter extends Observer {
 	public int susceptible = 0;
 	public int infected = 0;
 	public int recovered = 0;
-	
 	// counting agents that are hospitalized
-	public int numHospitalized = 0;
+	public double numHospitalized = 0;
 
 	public Experimenter(String fileName, String folderName, SimStateSweep state, ParameterSweeper sweeper,
 			String precision, String[] headers) {
@@ -41,7 +40,7 @@ public class Experimenter extends Observer {
 	}
 	
 	//override methods in parent observer class
-	public boolean reset(Environment state) {
+	public boolean reset(SimState state) {
 		super.reset();
 		susceptible =0;
 		infected = 0;
@@ -55,7 +54,7 @@ public class Experimenter extends Observer {
 		data.add(susceptible/total);
 		data.add(infected/total);
 		data.add(recovered/total);
-
+		data.add(numHospitalized);
 		return false;
 	}
 		
@@ -65,7 +64,7 @@ public class Experimenter extends Observer {
 	       if (eState.paramSweeps && getdata) {
 	    	   reset(eState);
 	    	   countStrategies(eState);
-	    	   numHospitalized = eState.hospitalizedAgents.numObjs;
+	    	   numHospitalized = (int) eState.hospitalizedAgents.numObjs;
 	    	   nextInterval();
 	       }
 	}
