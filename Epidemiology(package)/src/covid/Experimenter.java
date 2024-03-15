@@ -11,7 +11,7 @@ public class Experimenter extends Observer {
 	public int infected = 0;
 	public int recovered = 0;
 	// counting agents that are hospitalized
-	public double numHospitalized = 0;
+	public int numHospitalized = 0;
 
 	public Experimenter(String fileName, String folderName, SimStateSweep state, ParameterSweeper sweeper,
 			String precision, String[] headers) {
@@ -64,7 +64,7 @@ public class Experimenter extends Observer {
 	       if (eState.paramSweeps && getdata) {
 	    	   reset(eState);
 	    	   countStrategies(eState);
-	    	   numHospitalized = (int) eState.hospitalizedAgents.numObjs;
+	    	   numHospitalized = eState.hospitalizedAgents.numObjs;
 	    	   nextInterval();
 	       }
 	}
