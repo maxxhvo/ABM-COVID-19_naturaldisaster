@@ -7,7 +7,7 @@ for the data can also be specified. The form of the script is specified below:*/
 Scriptname: script.txt // The name of the file for parameter sweeps
 DataFolder: data //Folder holding simulation results
 DataFile: results.txt //Name of results file.
-CheckSweepOptions: false //Determines whether parameter sweeps is automatically checked.
-ColumnHeaders: N, item1, item2 //The column headers for the data file, 'steps' and 'rep' are prepended to this list
+CheckSweepOptions: true //Determines whether parameter sweeps is automatically checked.
+ColumnHeaders: N, susceptible, infected, recovered, numHospitalized //The column headers for the data file, 'steps' and 'rep' are prepended to this list
 Precision: 3  //Numerical precision for data, must be an integer.
 stopWhenNoAgents: true  //The simulation will stop when there are no agents left, else it will run to the stopping time even if there are not agents.
