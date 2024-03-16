@@ -2,7 +2,6 @@ package covid;
 
 import java.util.ArrayList;
 
-import covid.Agent.AgentStatus;
 import sim.util.Bag;
 import sim.util.Int2D; //2D space
 import spaces.Spaces;
@@ -11,21 +10,22 @@ import sweep.SimStateSweep;
 public class Environment extends SimStateSweep{
 
 	//default values
-	int gridHeight = 100;
-	int gridWidth = 100;
-	int n = 250;
-	int n_infected = 1; //initial infected
-	boolean oneAgentPerCell = false;
-	double p_spread = 0.7; //baseline spread
-	boolean natural_disaster = false; //switch btw conditions (changes hospital capacity)
-	int hospital_capacity = 50; 
-	double burnin = 0.2; //proportion to implement
-	int recovery_h = 2;
-	int recovery_natural = 11;
+	public int gridHeight = 100;
+	public int gridWidth = 100;
+	public int n = 250;
+	public int n_infected = 1; //initial infected
+	public boolean oneAgentPerCell = false;
+	public double p_spread = 0.7; //baseline spread
+	public boolean natural_disaster = false; //switch btw conditions (changes hospital capacity)
+	public int hospital_capacity = 50; 
+	public double burnin = 0.2; //proportion to implement
+	public int recovery_h = 2;
+	public int recovery_natural = 11;
 	Bag allAgents = new Bag(); //bag of all agents
 	Bag hospitalizedAgents = new Bag();
-	int searchRadius = 1;
-	boolean charts = true;
+	public int searchRadius = 3;
+	public int infectedAgents = 0;
+	public boolean charts = true;
 	
 	public Environment(long seed) {
 		super(seed);
@@ -80,6 +80,7 @@ public class Environment extends SimStateSweep{
 			
 			// Assign agent its own id, x, y location and their direction
 			Agent a = new Agent(i, x, y, xdir, ydir);
+			a.status = Status.SUSCEPTIBLE;
 			
 			// Now, add all the agents into our "bag"
 			allAgents.add(a);
@@ -96,7 +97,9 @@ public class Environment extends SimStateSweep{
 		for (int i = 0; i < n_infected; i++) {
 			int randomID = random.nextInt(n - 1);
 			Agent a = (Agent) allAgents.objs[randomID];
-			a.setStatus(AgentStatus.INFECTED);
+			a.status = Status.INFECTED;
+			a.colorByStatus(this);
+			infectedAgents++;
 		}
 	}
 	
@@ -114,10 +117,6 @@ public class Environment extends SimStateSweep{
 
 	public void setHospitalizedAgents(Bag hospitalizedAgents) {
 		this.hospitalizedAgents = hospitalizedAgents;
-	}
-
-	public int getN() {
-		return n;
 	}
 
 }

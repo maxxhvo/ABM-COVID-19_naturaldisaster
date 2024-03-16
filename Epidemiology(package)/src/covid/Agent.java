@@ -7,12 +7,7 @@ import sim.util.Bag;
 import sim.util.Int2D;
 
 public class Agent implements Steppable {
-	public enum AgentStatus {
-		SUSCEPTIBLE,
-		EXPOSED,
-		INFECTED,
-		RECOVERED
-	}
+	Status status;
 	int id, x, y, xdir, ydir;
 	
 	/* infectedTime represents how long the Agent has been infected
@@ -27,8 +22,6 @@ public class Agent implements Steppable {
 	int infectedTimeHos = 0;
 	
 	boolean isInHospital = false;  // false if in space, true if in the hospital
-
-	private AgentStatus status;
 	
 	//constructor method
 	
@@ -39,7 +32,6 @@ public class Agent implements Steppable {
 		this.y = y;
 		this.xdir = xdir;
 		this.ydir = ydir;
-		this.status = AgentStatus.SUSCEPTIBLE;
 	}
 
 	
@@ -79,12 +71,13 @@ public class Agent implements Steppable {
 		
 		for (int i = 0; i < neighbors.numObjs; i++) {
 			Agent a = (Agent)neighbors.objs[i];
-			if (a.status == AgentStatus.INFECTED) {
+			if (a.status == status.INFECTED) {
 				numInfectedInBag++;
 			}
 		}
 		
 		double p_catch = numInfectedInBag * state.p_spread;
+		p_catch = Math.min(p_catch, (double)1);
 		
 		if(state.random.nextBoolean(p_catch)) return true;
 		else return false;
@@ -95,12 +88,16 @@ public class Agent implements Steppable {
 		if (!updateStatus) return;
 		
 		switch(this.status) {
-		case AgentStatus.SUSCEPTIBLE:
-			this.status = AgentStatus.EXPOSED;
-		case AgentStatus.EXPOSED:
-			this.status = AgentStatus.INFECTED;
-		case AgentStatus.INFECTED:
-			this.status = AgentStatus.RECOVERED;
+		case SUSCEPTIBLE:
+			this.status = status.EXPOSED;
+			break;
+		case EXPOSED:
+			state.infectedAgents++;
+			this.status = status.INFECTED;
+			break;
+		case INFECTED:
+			this.status = status.RECOVERED;
+			break;
 		}
 		
 		colorByStatus(state);
@@ -130,18 +127,24 @@ public class Agent implements Steppable {
 	}
 	
 	public void colorByStatus(Environment state) {
-		switch(status) {
+		switch(this.status) {
 		case SUSCEPTIBLE:
 			// blue
 			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)0, (float)1, (float)1);
+			break;
+		case EXPOSED: 
+			state.gui.setOvalPortrayal2DColor(this, (float)1, (float)0, (float)1, (float)1);
+			break;
 		case INFECTED:
 			// color for red
 			if (isInHospital) state.gui.setOvalPortrayal2DColor(this, (float)1, (float)0, (float)0, (float)0.5);
 			// color for red should be dimmer (agent, r, g, b, opacity)
 			else state.gui.setOvalPortrayal2DColor(this, (float)1, (float)0, (float)0, (float)1);
+			break;
 		case RECOVERED:
 			// green
 			state.gui.setOvalPortrayal2DColor(this, (float)0, (float)1, (float)0, (float)1);
+			break;
 		}
 	}
 	
@@ -160,14 +163,6 @@ public class Agent implements Steppable {
 	return frozen
 	}
 	*/
-	
-	public void setStatus(AgentStatus status) {
-		this.status = status;
-	}
-	
-	public AgentStatus getStatus() {
-		return status;
-	}
 	
 	@Override
 	public void step(SimState state) {
