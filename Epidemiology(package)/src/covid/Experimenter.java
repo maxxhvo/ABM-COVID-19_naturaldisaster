@@ -1,7 +1,6 @@
 package covid;
 
 import observer.Observer;
-import sim.engine.Steppable;
 import sim.engine.SimState;
 import sim.util.Bag;
 import sweep.ParameterSweeper;
