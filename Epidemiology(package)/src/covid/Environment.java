@@ -23,7 +23,7 @@ public class Environment extends SimStateSweep{
 	public int recovery_natural = 11;
 	Bag allAgents = new Bag(); //bag of all agents
 	Bag hospitalizedAgents = new Bag();
-	public int searchRadius = 3;
+	public int searchRadius = 4;
 	public int infectedAgents = 0;
 	public boolean charts = true;
 	
