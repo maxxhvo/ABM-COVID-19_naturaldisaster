@@ -1,0 +1,290 @@
+Start: Mon Mar 18 20:59:16 PDT 2024
+
+Start: Mon Mar 18 20:59:16 PDT 2024
+
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  1001
+simNumber  10
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+
+Sweep Number:	1
+hospital_capacity	10
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	10010.000	250.000	0.058	0.019	0.923	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	10010.000	0.000	0.001	0.000	0.001	0.000
+	
+Sweep Number:	2
+hospital_capacity	20
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	10010.000	250.000	0.050	0.058	0.892	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	10010.000	0.000	0.000	0.000	0.000	0.000
+	
+Finished: Mon Mar 18 20:59:35 PDT 2024
+
+Start: Mon Mar 18 20:59:47 PDT 2024
+
+Start: Mon Mar 18 20:59:47 PDT 2024
+
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  1001
+simNumber  20
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+
+Sweep Number:	1
+hospital_capacity	10
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	20020.000	250.000	0.131	0.036	0.833	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	20020.000	0.000	0.000	0.000	0.000	0.000
+	
+Sweep Number:	2
+hospital_capacity	20
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	20020.000	250.000	0.112	0.108	0.780	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	20020.000	0.000	0.000	0.000	0.000	0.000
+	
+Finished: Mon Mar 18 21:00:27 PDT 2024
+
+Start: Mon Mar 18 21:02:43 PDT 2024
+
+Start: Mon Mar 18 21:02:43 PDT 2024
+
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  1001
+simNumber  40
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+
+Sweep Number:	1
+hospital_capacity	10
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	40040.000	250.000	0.099	0.076	0.825	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+	
+Sweep Number:	2
+hospital_capacity	20
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	40040.000	250.000	0.082	0.214	0.704	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+	
+Finished: Mon Mar 18 21:04:06 PDT 2024
+
+Start: Mon Mar 18 21:28:54 PDT 2024
+
+Start: Mon Mar 18 21:28:54 PDT 2024
+
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  100
+simNumber  40
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+
+Sweep Number:	1
+hospital_capacity	10
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+99.000	4000.000	250.000	0.128	0.096	0.776	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+99.000	4000.000	0.000	0.001	0.001	0.001	0.000
+	
+Sweep Number:	2
+hospital_capacity	20
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+99.000	4000.000	250.000	0.103	0.223	0.674	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+99.000	4000.000	0.000	0.000	0.001	0.000	0.000
+	
+Finished: Mon Mar 18 21:29:03 PDT 2024
+
+Start: Mon Mar 18 21:30:05 PDT 2024
+
+Start: Mon Mar 18 21:30:05 PDT 2024
+
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  200
+simNumber  40
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+
+Sweep Number:	1
+hospital_capacity	10
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+199.000	8000.000	250.000	0.134	0.076	0.790	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+199.000	8000.000	0.000	0.001	0.001	0.001	0.000
+	
+Sweep Number:	2
+hospital_capacity	20
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+199.000	8000.000	250.000	0.107	0.211	0.682	0.000
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+199.000	8000.000	0.000	0.000	0.000	0.000	0.000
+	
+Finished: Mon Mar 18 21:30:22 PDT 2024
+

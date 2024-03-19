@@ -1,0 +1,190 @@
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  1001
+simNumber  10
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+hospital_capacity	Value	Step	Reps	N	susceptible	infected	recovered	numHospitalized	Step	Reps	N	susceptible	infected	recovered	numHospitalized	
+hospital_capacity	10	1000.000	10010.000	250.000	0.058	0.019	0.923	0.000	1000.000	10010.000	0.000	0.001	0.000	0.001	0.000
+hospital_capacity	20	1000.000	10010.000	250.000	0.050	0.058	0.892	0.000	1000.000	10010.000	0.000	0.000	0.000	0.000	0.000
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  1001
+simNumber  20
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+hospital_capacity	Value	Step	Reps	N	susceptible	infected	recovered	numHospitalized	Step	Reps	N	susceptible	infected	recovered	numHospitalized	
+hospital_capacity	10	1000.000	20020.000	250.000	0.131	0.036	0.833	0.000	1000.000	20020.000	0.000	0.000	0.000	0.000	0.000
+hospital_capacity	20	1000.000	20020.000	250.000	0.112	0.108	0.780	0.000	1000.000	20020.000	0.000	0.000	0.000	0.000	0.000
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  1001
+simNumber  40
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+hospital_capacity	Value	Step	Reps	N	susceptible	infected	recovered	numHospitalized	Step	Reps	N	susceptible	infected	recovered	numHospitalized	
+hospital_capacity	10	1000.000	40040.000	250.000	0.099	0.076	0.825	0.000	1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+hospital_capacity	20	1000.000	40040.000	250.000	0.082	0.214	0.704	0.000	1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  100
+simNumber  40
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+hospital_capacity	Value	Step	Reps	N	susceptible	infected	recovered	numHospitalized	Step	Reps	N	susceptible	infected	recovered	numHospitalized	
+hospital_capacity	10	99.000	4000.000	250.000	0.128	0.096	0.776	0.000	99.000	4000.000	0.000	0.001	0.001	0.001	0.000
+hospital_capacity	20	99.000	4000.000	250.000	0.103	0.223	0.674	0.000	99.000	4000.000	0.000	0.000	0.001	0.000	0.000
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  200
+simNumber  40
+fileDataName  results1.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+hospital_capacity	Value	Step	Reps	N	susceptible	infected	recovered	numHospitalized	Step	Reps	N	susceptible	infected	recovered	numHospitalized	
+hospital_capacity	10	199.000	8000.000	250.000	0.134	0.076	0.790	0.000	199.000	8000.000	0.000	0.001	0.001	0.001	0.000
+hospital_capacity	20	199.000	8000.000	250.000	0.107	0.211	0.682	0.000	199.000	8000.000	0.000	0.000	0.000	0.000	0.000

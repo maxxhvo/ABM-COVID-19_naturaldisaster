@@ -1,0 +1,82 @@
+Parameter Sweeps
+
+Number of parameters swept: 4
+
+Table of parameters swept 
+public	int	n	250	250	500	500	
+public	int	hospital_capacity	10	20	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  1001
+simNumber  40
+fileDataName  results2.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+n	Value	hospital_capacity	Value	Step	Reps	N	susceptible	infected	recovered	numHospitalized	Step	Reps	N	susceptible	infected	recovered	numHospitalized	
+n	250	hospital_capacity	10	1000.000	40040.000	250.000	0.085	0.072	0.843	0.000	1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+n	250	hospital_capacity	20	1000.000	40040.000	250.000	0.072	0.203	0.725	0.000	1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+n	500	hospital_capacity	10	1000.000	40040.000	500.000	0.515	0.170	0.315	0.000	1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+n	500	hospital_capacity	20	1000.000	40040.000	500.000	0.471	0.238	0.291	0.000	1000.000	40040.000	0.000	0.000	0.000	0.000	0.000
+Parameter Sweeps
+
+Number of parameters swept: 4
+
+Table of parameters swept 
+public	int	n	250	250	500	500	
+public	int	hospital_capacity	10	20	10	20	
+
+Parameter values for the class class covid.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+burnin  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  true
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  200
+simNumber  40
+fileDataName  results2.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+n	Value	hospital_capacity	Value	Step	Reps	N	susceptible	infected	recovered	numHospitalized	Step	Reps	N	susceptible	infected	recovered	numHospitalized	
+n	250	hospital_capacity	10	199.000	8000.000	250.000	0.081	0.071	0.847	0.000	199.000	8000.000	0.000	0.001	0.000	0.001	0.000
+n	250	hospital_capacity	20	199.000	8000.000	250.000	0.062	0.207	0.732	0.000	199.000	8000.000	0.000	0.000	0.000	0.000	0.000
+n	500	hospital_capacity	10	199.000	8000.000	500.000	0.509	0.165	0.327	0.000	199.000	8000.000	0.000	0.000	0.000	0.000	0.000
+n	500	hospital_capacity	20	199.000	8000.000	500.000	0.474	0.229	0.297	0.000	199.000	8000.000	0.000	0.000	0.000	0.000	0.000
