@@ -1,0 +1,58 @@
+Start: Sun Apr 28 22:13:11 PDT 2024
+
+Start: Sun Apr 28 22:13:11 PDT 2024
+
+Parameter Sweeps
+
+Number of parameters swept: 2
+
+Table of parameters swept 
+public	int	hospital_capacity	10	20	
+
+Parameter values for the class class epi.Environment
+gridHeight  100
+gridWidth  100
+n  250
+n_infected  1
+oneAgentPerCell  false
+p_spread  0.7
+natural_disaster  false
+hospital_capacity  10
+waitTime  0.2
+recovery_h  2
+recovery_natural  11
+searchRadius  4
+infectedAgents  0
+charts  false
+nameSpace  SPARSE
+gridWidth  100
+gridHeight  100
+paramSweeps  true
+simLength  250
+simNumber  20
+fileDataName  results.txt
+folderDataName  data
+dataSamplingInterval  1
+burnIn  0
+scheduleTimeInterval  1.0
+closeProgramAtend  true
+customSweepOnly  false
+
+Sweep Number:	1
+hospital_capacity	10
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+249.000	5000.000	249.971	0.397	0.039	0.565	0.029
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+249.000	5000.000	0.005	0.001	0.000	0.001	0.000
+	
+Sweep Number:	2
+hospital_capacity	20
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+249.000	5000.000	250.000	0.349	0.114	0.538	0.079
+
+Step	Reps	N	susceptible	infected	recovered	numHospitalized
+249.000	5000.000	0.000	0.000	0.000	0.000	0.000
+	
+Finished: Sun Apr 28 22:13:34 PDT 2024
+
