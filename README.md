@@ -7,3 +7,5 @@
 &emsp; Due to natural disasters reducing hospital capacity as resources are redirected to crisis management, our principal hypothesis predicts that the presence of natural disasters hinders the population's ability to effectively combat the spread of the disease. Additionally, specific hypotheses are employed to assess the effect of previously described adjustments: the impact of increasing the amount of initially infected agents on disease spread, the model's robustness to population scaling/ceilings, and the influence of recovery time proportions on infection patterns.
 
 &emsp; Overall, our study contributes to understanding how natural disasters affect disease propagation and offers insights into optimal hospital planning amid such crises as it underscores the importance of considering compound risks in public health preparedness and decision-making.
+
+[Link to PDF](https://drive.google.com/file/d/1yspj-rtG9RbIkN-G8Zq-ceQxdmIQS3N2/view?usp=sharing)
