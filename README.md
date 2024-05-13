@@ -12,7 +12,7 @@
 [Extensive Literature Review and Methodologies](https://docs.google.com/document/d/1HDjQmd92sRcfjmWrNkk_tsjCDY04mwYDOTWcgefKe3k/edit?usp=sharing)
 
 ## Conference Poster
-![Alt text](https://github.com/maxxhvo/ABM~COVID-19_naturaldisaster/raw/main/ABM_CONFERENCE.jpg)
+![Alt text](https://github.com/maxxhvo/ABM-COVID-19_naturaldisaster/blob/main/ABM_CONFERENCE.jpg?raw=true)
 
 
 
