@@ -8,4 +8,13 @@
 
 &emsp; Overall, our study contributes to understanding how natural disasters affect disease propagation and offers insights into optimal hospital planning amid such crises as it underscores the importance of considering compound risks in public health preparedness and decision-making.
 
-[Link to PDF](https://drive.google.com/file/d/1yspj-rtG9RbIkN-G8Zq-ceQxdmIQS3N2/view?usp=sharing)
+# Additional Resources
+[Extensive Literature Review and Methodologies](https://docs.google.com/document/d/1HDjQmd92sRcfjmWrNkk_tsjCDY04mwYDOTWcgefKe3k/edit?usp=sharing)
+
+## Conference Poster
+![Alt text](https://github.com/maxxhvo/ABM~COVID-19_naturaldisaster/raw/main/ABM_CONFERENCE.jpg)
+
+
+
+
+
